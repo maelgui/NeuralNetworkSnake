@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import pygame
 from pygame.locals import *
 from enum import Enum
@@ -88,9 +90,9 @@ class Player:
             pygame.draw.rect(surface, color_snake, self.body[i])
 
     def score(self):
-        if self.killed:
-            return 0
-        return len(self.body) * (1/(1-np.exp(self.tick/10)) - 0.5) * 2
+        #if self.killed:
+        #    return 0
+        return len(self.body)
 
 class Game:
     def __init__(self, player):
@@ -210,7 +212,7 @@ def create_surface(i):
     return screen.subsurface(Rect((x * surface_size[0] + x, y * surface_size[1] + y), surface_size))
 
 if __name__ == "__main__" :
-    n_surface = 1
+    n_surface = 6
     screen_size = (surface_size[0] * 3 + 2, surface_size[1] * 2 + 1)
     screen = pygame.display.set_mode(screen_size)
     surfaces = [create_surface(i) for i in range(n_surface)]    
